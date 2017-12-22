@@ -10,7 +10,7 @@ import org.jointheleague.graphical.robot.Robot;
 
 public class ChristmasTree {
 
-	Robot rob  = new Robot();
+	Robot dig  = new Robot("batman");
 	
     public static void main(String[] args) {
         ChristmasTree ohChristmasTree = new ChristmasTree();
@@ -25,57 +25,71 @@ public class ChristmasTree {
 
 
     void drawTreeBody() {
+    	dig.miniaturize();
+    	dig.penDown();
         // 8. Change the color of the line the robot draws to forest green    
-
+dig.setPenColor(0,999,0);
 
         // 1. Make a variable for turnAmount and set it to 175
-
+int turnAmount=175;
 
         // 2. Start the Robot facing to the right
-
+dig.setAngle(90);
 
         // 5. Repeat steps 3 through 11, 11 times
+for (int w = 0; w < 11; w++) {
+	
 
 
             // 3. Move the robot the width of the tree
-    
+    dig.move((int) treeWidth);
             // 4. Turn the robot the current turnAmount to the right
-    
+    dig.turn(turnAmount);
             // 6. Set the treeWidth to the current treeWidth times the scale
-    
+   treeWidth =  treeWidth * scale;
             // 7. Move the robot the width of a tree again
-    
+    dig.move((int) treeWidth);
             // 9. Turn the robot the current turn amount to the LEFT
-    
+    dig.turn(-turnAmount);
             // 10. Set the treeWidth to the current treeWidth times the scale again
-    
+    treeWidth =  treeWidth * scale;
             // 11. Decrease turnAmount by 1
-
-
+turnAmount = turnAmount - 1;
 }
-    
+}
+      
     void drawTreeTrunk() {
+    	dig.miniaturize();
         // 1. Move the robot half the width of the tree
-
+            dig.move((int) (treeWidth=  treeWidth/2));
 
         // 2. Change the robot so that it is pointing straight down
-
+dig.setAngle(180);
 
         // 4. Set the pen width to the tree width divided by 10
-
+dig.setPenWidth((int) (treeWidth=treeWidth/10));
 
         // 5. Change the color of the line the robot draws to brown
-
+dig.setPenColor(74,70,15);
 
         // 3. Move the robot a quarter the tree width
-
-
+dig.move((int) (treeWidth=treeWidth/4));
+dig.move(100);
     }
     
     void drawStar() {
-        // * Optional: Draw a red star on top of the tree. Hint: 144 degrees makes a star.
-    
-    }
+    	dig.miniaturize();
+    // * Optional: Draw a red star on top of the tree. Hint: 144 degrees makes a star.
+    	dig.setPenColor(0,255,255);
+    	for (int i = 0; i < 5; i++) {
+    		 
+    		 dig.penDown();
+    		    dig.setSpeed(1000000);
+  
+    	dig.move(80);
+    	dig.turn(144);
+    	
+    }}
 
 
 }
